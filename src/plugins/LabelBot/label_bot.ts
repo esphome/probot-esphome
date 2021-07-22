@@ -11,6 +11,7 @@ import warnOnMergeToRelease from "./strategies/warnOnMergeToRelease";
 import markCore from "./strategies/markCore";
 import smallPR from "./strategies/smallPR";
 import hasTests from "./strategies/hasTests";
+import needsTests from "./strategies/needsTests";
 import typeOfChange from "./strategies/typeOfChange";
 import markDashboard from "./strategies/markDashboard";
 import { PRContext } from "../../types";
@@ -29,6 +30,7 @@ const STRATEGIES = [
   markCore,
   smallPR,
   hasTests,
+  needsTests,
   // typeOfChange,
   markDashboard,
 ];
@@ -71,6 +73,7 @@ export const runLabelBot = async (context: PRContext) => {
         "small-pr",
         "dashboard",
         "has-tests",
+        "needs-tests",
       ].includes(label)
   );
   const managedLabelsStr = managedLabels
