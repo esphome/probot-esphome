@@ -80,17 +80,18 @@ export const runLabelBot = async (context: PRContext) => {
 
   const files = await fetchPullRequestFilesFromContext(context);
   const parsed = files.map((file) => new ParsedPath(file));
-  const labelSet = new Set();
+  const labelSet = new Set<string>();
 
   STRATEGIES.forEach((strategy) => {
-    for (let label of strategy(context, parsed)) {
+    for (let label of strategy(context, parsed, labelSet)) {
       labelSet.add(label);
     }
   });
+
   if (context.payload.pull_request.base.ref !== "dev") {
     // when base ref is not dev, only use merging-to-* tags.
     labelSet.clear();
-    for (let label of warnOnMergeToRelease(context, parsed)) {
+    for (let label of warnOnMergeToRelease(context, parsed, labelSet)) {
       labelSet.add(label);
     }
   }
