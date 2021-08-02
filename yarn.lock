@@ -863,7 +863,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"codeowners-utils@npm:^1.0.0":
+"codeowners-utils@npm:^1.0.2":
   version: 1.0.2
   resolution: "codeowners-utils@npm:1.0.2"
   dependencies:
@@ -3124,7 +3124,7 @@ __metadata:
     "@types/debounce": ^1.2.0
     "@types/mocha": ^5.2.7
     "@types/node": ^12.6.8
-    codeowners-utils: ^1.0.0
+    codeowners-utils: ^1.0.2
     debounce: ^1.2.0
     ignore: ^5.1.2
     mocha: ^6.2.0
