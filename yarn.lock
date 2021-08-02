@@ -1809,7 +1809,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^5.1.2, ignore@npm:^5.1.4":
+"ignore@npm:^5.1.4, ignore@npm:^5.1.8":
   version: 5.1.8
   resolution: "ignore@npm:5.1.8"
   checksum: 967abadb61e2cb0e5c5e8c4e1686ab926f91bc1a4680d994b91947d3c65d04c3ae126dcdf67f08e0feeb8ff8407d453e641aeeddcc47a3a3cca359f283cf6121
@@ -3126,7 +3126,7 @@ __metadata:
     "@types/node": ^12.6.8
     codeowners-utils: ^1.0.2
     debounce: ^1.2.0
-    ignore: ^5.1.2
+    ignore: ^5.1.8
     mocha: ^6.2.0
     prettier: ^2.3.2
     probot: ^9.2.19
