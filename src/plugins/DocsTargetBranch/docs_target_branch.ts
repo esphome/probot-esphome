@@ -1,5 +1,4 @@
-import { Application } from "probot";
-import { WebhookPayloadIssuesIssue } from "@octokit/webhooks";
+import { Probot } from "probot";
 import { PRContext } from "../../types";
 import { filterEventByRepo } from "../../util/filter_event_repo";
 import { filterEventNoBot } from "../../util/filter_event_no_bot";
@@ -18,7 +17,7 @@ export const bodyShouldTargetCurrent: string =
 export const bodyShouldTargetNext: string =
   "It seems that this PR is targeted against an incorrect branch since it has a parent PR on one of our codebases. Documentation that needs to be updated for an upcoming release should target the `next` branch. Please change the target branch of this PR to `next` and rebase if needed.";
 
-export const initDocsTargetBranch = (app: Application) => {
+export const initDocsTargetBranch = (app: Probot) => {
   app.on(
     ["pull_request.opened", "pull_request.edited"],
     filterEventNoBot(
@@ -60,13 +59,12 @@ const correctTargetBranchDetected = async (context: PRContext) => {
   const pr = getIssueFromPayload(context);
   const author = context.payload.sender.login;
   const promises: Promise<unknown>[] = [];
-  // Typing is wrong for PRs, so use labels type from issues
-  const currentLabels = (pr.labels as WebhookPayloadIssuesIssue["labels"]).map(
+  const currentLabels = pr.labels.map(
     (label) => label.name
   );
   if (currentLabels.includes("wrong-base-branch")) {
     promises.push(
-      context.github.issues.removeLabel(
+      context.octokit.issues.removeLabel(
         // Bug in Probot: https://github.com/probot/probot/issues/917
         // @ts-ignore
         context.issue({
@@ -89,8 +87,7 @@ const wrongTargetBranchDetected = async (
       : bodyShouldTargetCurrent;
   const pr = getIssueFromPayload(context);
 
-  // Typing is wrong for PRs, so use labels type from issues
-  const currentLabels = (pr.labels as WebhookPayloadIssuesIssue["labels"]).map(
+  const currentLabels = pr.labels.map(
     (label) => label.name
   );
   if (currentLabels.includes("wrong-base-branch")) {
@@ -101,7 +98,7 @@ const wrongTargetBranchDetected = async (
 
   context.log(NAME, `Adding ${labels} to PR`);
   promises.push(
-    context.github.issues.addLabels(
+    context.octokit.issues.addLabels(
       // Bug in Probot: https://github.com/probot/probot/issues/917
       // @ts-ignore
       context.issue({

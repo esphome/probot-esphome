@@ -1,23 +1,22 @@
 import { PRContext } from "../../types";
-import { Application } from "probot";
+import { Probot } from "probot";
 import { filterEventByRepo } from "../../util/filter_event_repo";
 import { REPO_CORE } from "../../const";
 import { filterEventNoBot } from "../../util/filter_event_no_bot";
-import { WebhookPayloadIssuesIssue } from "@octokit/webhooks";
 
 const NAME = "Hacktoberfest";
 
 const isHacktoberfestLive = () => new Date().getMonth() == 9;
 
-export const initHacktoberfest = (app: Application) => {
+export const initHacktoberfest = (app: Probot) => {
   if (isHacktoberfestLive()) {
-    app.on(["pull_request.opened"], runHacktoberfestNewPR);
+    app.on(["pull_request.opened"], runHacktoberfestNewPR as any);
   }
-  app.on(["pull_request.closed"], runHacktoberfestClosedPR);
+  app.on(["pull_request.closed"], runHacktoberfestClosedPR as any);
 };
 
 const runHacktoberfestNewPR = async (context: PRContext) => {
-  await context.github.issues.addLabels({
+  await context.octokit.issues.addLabels({
     ...context.issue(),
     labels: ["Hacktoberfest"],
   });
@@ -29,7 +28,7 @@ const runHacktoberfestClosedPR = async (context: PRContext) => {
   // Don't do something if the PR got merged or if it had no Hacktoberfest label.
   if (
     pr.merged ||
-    (pr.labels as WebhookPayloadIssuesIssue["labels"]).find(
+    pr.labels.find(
       (label) => label.name === "Hacktoberfest"
     ) == undefined
   ) {
@@ -38,13 +37,15 @@ const runHacktoberfestClosedPR = async (context: PRContext) => {
 
   // If a Hacktoberfest PR got closed, automatically add "invalid" to it so it wont't count for Hacktoberfest
   await Promise.all([
-    context.github.issues.addLabels({
-      ...context.issue(),
-      labels: ["invalid"],
-    }),
-    context.github.issues.removeLabel({
-      ...context.issue(),
-      name: "Hacktoberfest",
-    }),
+    context.octokit.issues.addLabels(
+      context.issue({
+        labels: ["invalid"],
+      }),
+    ),
+    context.octokit.issues.removeLabel(
+      context.issue({
+        name: "Hacktoberfest",
+      }),
+    ),
   ]);
 };

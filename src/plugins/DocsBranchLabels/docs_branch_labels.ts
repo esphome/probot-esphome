@@ -1,14 +1,13 @@
 import { PRContext } from "../../types";
-import { Application } from "probot";
+import { Probot } from "probot";
 import { REPO_DOCS } from "../../const";
 import { filterEventByRepo } from "../../util/filter_event_repo";
-import { WebhookPayloadIssuesIssue } from "@octokit/webhooks";
 
 const NAME = "DocsBranchLabels";
 
 const BRANCHES = ["current", "beta", "next"];
 
-export const initDocsBranchLabels = (app: Application) => {
+export const initDocsBranchLabels = (app: Probot) => {
   app.on(
     ["pull_request.opened", "pull_request.edited"],
     filterEventByRepo(NAME, [REPO_DOCS], runDocsBranchLabels)
@@ -23,8 +22,7 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   );
 
   const targetBranch = pr.base.ref;
-  // Typing is wrong for PRs, so use labels type from issues
-  const currentLabels = (pr.labels as WebhookPayloadIssuesIssue["labels"]).map(
+  const currentLabels = pr.labels.map(
     (label) => label.name
   );
   const tasks: Promise<unknown>[] = [];
@@ -36,7 +34,7 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   ) {
     context.log(NAME, `Adding label ${targetBranch} to PR ${pr.number}`);
     tasks.push(
-      context.github.issues.addLabels({
+      context.octokit.issues.addLabels({
         ...context.issue(),
         labels: [targetBranch],
       })
@@ -50,7 +48,7 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   context.log(NAME, `Removing labels: ${toRemove}`);
   toRemove.forEach((label) =>
     tasks.push(
-      context.github.issues.removeLabel({ ...context.issue(), name: label })
+      context.octokit.issues.removeLabel({ ...context.issue(), name: label })
     )
   );
 
