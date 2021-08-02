@@ -27,17 +27,6 @@
     "ignore": "^5.1.2",
     "probot": "^9.2.19"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "prettier": {
     "trailingComma": "es5",
     "arrowParens": "always"
