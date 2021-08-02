@@ -137,7 +137,11 @@ export const runLabelBot = async (context: PRContext) => {
     );
     removeLabels.forEach((label) => {
       promises.push(
-        context.octokit.issues.removeLabel({ ...context.issue(), name: label })
+        context.octokit.issues.removeLabel(
+          context.issue({
+            name: label,
+          })
+        )
       );
     });
   }

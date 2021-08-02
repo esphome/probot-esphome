@@ -46,7 +46,11 @@ export const runLabelCleaner = async (context: PRContext) => {
     context.log(NAME, `Cleaning up labels: ${labelsToRemove.join(", ")}`);
     await Promise.all(
       labelsToRemove.map((label) =>
-        context.octokit.issues.removeLabel({ ...context.issue(), name: label })
+        context.octokit.issues.removeLabel(
+          context.issue({
+            name: label,
+          })
+        )
       )
     );
   }

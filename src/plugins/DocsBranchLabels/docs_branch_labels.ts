@@ -32,10 +32,11 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   ) {
     context.log(NAME, `Adding label ${targetBranch} to PR ${pr.number}`);
     tasks.push(
-      context.octokit.issues.addLabels({
-        ...context.issue(),
-        labels: [targetBranch],
-      })
+      context.octokit.issues.addLabels(
+        context.issue({
+          labels: [targetBranch],
+        })
+      )
     );
   }
 
@@ -46,7 +47,11 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   context.log(NAME, `Removing labels: ${toRemove}`);
   toRemove.forEach((label) =>
     tasks.push(
-      context.octokit.issues.removeLabel({ ...context.issue(), name: label })
+      context.octokit.issues.removeLabel(
+        context.issue({
+          name: label,
+        })
+      )
     )
   );
 

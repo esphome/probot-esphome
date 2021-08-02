@@ -16,10 +16,11 @@ export const initHacktoberfest = (app: Probot) => {
 };
 
 const runHacktoberfestNewPR = async (context: PRContext) => {
-  await context.octokit.issues.addLabels({
-    ...context.issue(),
-    labels: ["Hacktoberfest"],
-  });
+  await context.octokit.issues.addLabels(
+    context.issue({
+      labels: ["Hacktoberfest"],
+    })
+  );
 };
 
 const runHacktoberfestClosedPR = async (context: PRContext) => {
