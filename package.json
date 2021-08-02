@@ -25,7 +25,7 @@
     "codeowners-utils": "^1.0.2",
     "debounce": "^1.2.0",
     "ignore": "^5.1.8",
-    "probot": "^11.4.1"
+    "probot": "^12.1.0"
   },
   "prettier": {
     "trailingComma": "es5",
