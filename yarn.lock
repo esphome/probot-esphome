@@ -273,6 +273,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/webhooks-types@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "@octokit/webhooks-types@npm:4.2.2"
+  checksum: 6f13807666fbaf3f5afd3b81321d92fb19e35c80607134c27156eb9bd0bff565ba27d25a0d1e50d4367f72c1fdf6d3fc44fc0c669c95c01dba8b03fda0421173
+  languageName: node
+  linkType: hard
+
 "@octokit/webhooks@npm:^9.8.4":
   version: 9.11.0
   resolution: "@octokit/webhooks@npm:9.11.0"
@@ -2907,6 +2914,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "probot-esphome@workspace:."
   dependencies:
+    "@octokit/webhooks-types": ^4.2.2
     "@types/debounce": ^1.2.0
     "@types/mocha": ^5.2.7
     "@types/node": ^12.6.8
