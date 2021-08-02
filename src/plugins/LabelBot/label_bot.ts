@@ -52,9 +52,7 @@ export const runLabelBot = async (context: PRContext) => {
     `Running on PR ${context.payload.repository.name}#${pr.number}`
   );
 
-  const currentLabels = pr.labels.map(
-    (label) => label.name
-  );
+  const currentLabels = pr.labels.map((label) => label.name);
   const currentLabelsStr = currentLabels
     .map((label) => `"${label}"`)
     .join(", ");

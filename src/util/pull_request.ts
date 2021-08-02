@@ -1,4 +1,9 @@
-import { PRContext, Octokit, PullsListFilesResponseItem, PullsListFilesResponse } from "../types";
+import {
+  PRContext,
+  Octokit,
+  PullsListFilesResponseItem,
+  PullsListFilesResponse,
+} from "../types";
 
 export const fetchPRWithCache = async (
   github: Octokit,

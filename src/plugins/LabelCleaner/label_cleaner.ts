@@ -34,9 +34,7 @@ export const runLabelCleaner = async (context: PRContext) => {
     `Running on ${context.payload.repository.name}#${pr.number}`
   );
 
-  const currentLabels = pr.labels.map(
-    (label) => label.name
-  );
+  const currentLabels = pr.labels.map((label) => label.name);
   context.log(NAME, `Current Labels: ${currentLabels}`);
 
   const labelsToRemove = TO_CLEAN[repo]

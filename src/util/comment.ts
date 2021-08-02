@@ -45,7 +45,7 @@ export const scheduleComment = (
   if (!("_commentsToPost" in patchedContext)) {
     patchedContext._commentsToPost = [];
   }
-  context.payload.repository
+  context.payload.repository;
   patchedContext._commentsToPost.push({ handler, message });
   debouncedPostComment(context);
 };

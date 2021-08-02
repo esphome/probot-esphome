@@ -3,9 +3,7 @@ import { Repository } from "@octokit/webhooks-types";
 import { WebhookEvents } from "../types";
 import { ProbotWebhooks } from "probot/lib/types";
 
-export const extractRepoFromContext = (
-  context: any
-): string | undefined => {
+export const extractRepoFromContext = (context: any): string | undefined => {
   let repo: string | undefined;
   const anyContext = context as any;
 

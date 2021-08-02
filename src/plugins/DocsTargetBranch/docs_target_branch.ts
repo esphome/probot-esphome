@@ -59,9 +59,7 @@ const correctTargetBranchDetected = async (context: PRContext) => {
   const pr = getIssueFromPayload(context);
   const author = context.payload.sender.login;
   const promises: Promise<unknown>[] = [];
-  const currentLabels = pr.labels.map(
-    (label) => label.name
-  );
+  const currentLabels = pr.labels.map((label) => label.name);
   if (currentLabels.includes("wrong-base-branch")) {
     promises.push(
       context.octokit.issues.removeLabel(
@@ -87,9 +85,7 @@ const wrongTargetBranchDetected = async (
       : bodyShouldTargetCurrent;
   const pr = getIssueFromPayload(context);
 
-  const currentLabels = pr.labels.map(
-    (label) => label.name
-  );
+  const currentLabels = pr.labels.map((label) => label.name);
   if (currentLabels.includes("wrong-base-branch")) {
     // If the label "wrong-base-branch" already exsist we can assume that this action has run,
     // and we should ignore it.

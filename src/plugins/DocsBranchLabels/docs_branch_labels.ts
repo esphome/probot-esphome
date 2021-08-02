@@ -22,9 +22,7 @@ export const runDocsBranchLabels = async (context: PRContext) => {
   );
 
   const targetBranch = pr.base.ref;
-  const currentLabels = pr.labels.map(
-    (label) => label.name
-  );
+  const currentLabels = pr.labels.map((label) => label.name);
   const tasks: Promise<unknown>[] = [];
   context.log(NAME, `Current labels: ${currentLabels}`);
 

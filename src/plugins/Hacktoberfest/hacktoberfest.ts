@@ -28,9 +28,7 @@ const runHacktoberfestClosedPR = async (context: PRContext) => {
   // Don't do something if the PR got merged or if it had no Hacktoberfest label.
   if (
     pr.merged ||
-    pr.labels.find(
-      (label) => label.name === "Hacktoberfest"
-    ) == undefined
+    pr.labels.find((label) => label.name === "Hacktoberfest") == undefined
   ) {
     return;
   }
@@ -40,12 +38,12 @@ const runHacktoberfestClosedPR = async (context: PRContext) => {
     context.octokit.issues.addLabels(
       context.issue({
         labels: ["invalid"],
-      }),
+      })
     ),
     context.octokit.issues.removeLabel(
       context.issue({
         name: "Hacktoberfest",
-      }),
+      })
     ),
   ]);
 };

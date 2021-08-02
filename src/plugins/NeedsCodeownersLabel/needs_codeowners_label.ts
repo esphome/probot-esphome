@@ -27,9 +27,7 @@ const hasEditedCodeowners = async (context: PRContext) => {
 };
 
 const getLabelNames = (pr: PullRequest) => {
-  return pr.labels.map(
-    (label) => label.name
-  );
+  return pr.labels.map((label) => label.name);
 };
 
 const runLabeled = async (context: LabeledOrUnlabeledPRContext) => {

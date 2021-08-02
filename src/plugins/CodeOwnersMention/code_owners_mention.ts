@@ -69,7 +69,9 @@ export const runCodeOwnersMention = async (
   }
 
   // The type for the PR payload is wrong for assignees. Cast it to issue. type is the same.
-  const assignees = triggerIssue.assignees.map((assignee) => assignee.login.toLowerCase());
+  const assignees = triggerIssue.assignees.map((assignee) =>
+    assignee.login.toLowerCase()
+  );
 
   const commentersData = await context.octokit.issues.listComments(
     context.issue({ per_page: 100 })

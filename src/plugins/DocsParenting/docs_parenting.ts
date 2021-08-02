@@ -101,7 +101,7 @@ const runDocsParentingDocs = async (context: PRContext) => {
 
   await context.octokit.issues.addLabels(
     context.issue({
-      labels: ["has-parent"]
+      labels: ["has-parent"],
     })
   );
 };
