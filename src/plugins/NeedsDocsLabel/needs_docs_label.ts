@@ -18,7 +18,7 @@ export const initNeedsDocsLabel = (app: Probot) => {
 };
 
 export const runNeedsDocsLabel = async (context: PRContext) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const pr = context.payload.pull_request;
   log.debug(`Running on PR ${context.payload.repository.name}#${pr.number}`);
 

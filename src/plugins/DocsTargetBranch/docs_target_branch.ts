@@ -28,7 +28,7 @@ export const initDocsTargetBranch = (app: Probot) => {
 };
 
 export const runDocsTargetBranch = async (context: PRContext) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const target = context.payload.pull_request.base.ref;
   const links = extractIssuesOrPullRequestMarkdownLinks(
     context.payload.pull_request.body
@@ -78,7 +78,7 @@ const wrongTargetBranchDetected = async (
   context: PRContext,
   correctTargetBranch: "current" | "next"
 ) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const labels = ["wrong-base-branch", "in-progress"];
   const promises: Promise<unknown>[] = [];
   const body: string =

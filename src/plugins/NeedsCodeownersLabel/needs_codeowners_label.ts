@@ -31,7 +31,7 @@ const getLabelNames = (pr: PullRequest) => {
 };
 
 const runLabeled = async (context: LabeledOrUnlabeledPRContext) => {
-  const log = context.log.child({ plugin: `${NAME} labeled` });
+  const log = context.log.child({ name: `${NAME} labeled` });
   const pr = context.payload.pull_request;
   const label = context.payload.label.name;
 
@@ -78,7 +78,7 @@ const runLabeled = async (context: LabeledOrUnlabeledPRContext) => {
 };
 
 const runSynchronize = async (context: Context<"pull_request.synchronize">) => {
-  const log = context.log.child({ plugin: `${NAME} synchronize` });
+  const log = context.log.child({ name: `${NAME} synchronize` });
   const pr = context.payload.pull_request;
   log.debug(`Running on PR ${context.payload.repository.name}#${pr.number}`);
 

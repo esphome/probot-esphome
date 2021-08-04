@@ -19,7 +19,7 @@ export const initCodeOwnersMention = (app: Probot) => {
 export const runCodeOwnersMention = async (
   context: LabeledIssueOrPRContext
 ) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const labelName = context.payload.label.name;
   const triggerIssue = getIssueFromPayload(context as any);
   const triggerURL = triggerIssue.html_url;

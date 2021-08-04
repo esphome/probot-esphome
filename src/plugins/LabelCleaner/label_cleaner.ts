@@ -23,7 +23,7 @@ export const initLabelCleaner = (app: Probot) => {
 };
 
 export const runLabelCleaner = async (context: PRContext) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const repo = extractRepoFromContext(context);
 
   if (!(repo in TO_CLEAN)) {

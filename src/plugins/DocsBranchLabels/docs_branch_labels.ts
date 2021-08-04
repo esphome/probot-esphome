@@ -15,7 +15,7 @@ export const initDocsBranchLabels = (app: Probot) => {
 };
 
 export const runDocsBranchLabels = async (context: PRContext) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const pr = context.payload.pull_request;
   log.debug(`Running on ${context.payload.repository.name}#${pr.number}`);
 

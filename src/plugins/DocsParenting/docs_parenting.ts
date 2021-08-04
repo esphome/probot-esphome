@@ -28,7 +28,7 @@ export const initDocsParenting = (app: Probot) => {
 
 // Deal with PRs on core repo
 const runDocsParentingNonDocs = async (context: PRContext) => {
-  const log = context.log.child({ plugin: `${NAME} CORE` });
+  const log = context.log.child({ name: `${NAME} CORE` });
   const triggerIssue = getIssueFromPayload(context);
   log.debug(
     `Running on ${context.payload.repository.name}#${triggerIssue.number}`
@@ -69,7 +69,7 @@ const runDocsParentingNonDocs = async (context: PRContext) => {
 
 // Deal with PRs on Home Assistant.io repo
 const runDocsParentingDocs = async (context: PRContext) => {
-  const log = context.log.child({ plugin: `${NAME} DOCS` });
+  const log = context.log.child({ name: `${NAME} DOCS` });
   const triggerIssue = getIssueFromPayload(context);
   log.debug(`Running on docs#${triggerIssue.number}`);
 
@@ -101,7 +101,7 @@ const runDocsParentingDocs = async (context: PRContext) => {
  *  - parent merged: add label "parent-merged"
  */
 const updateDocsParentStatus = async (context: PRContext) => {
-  const log = context.log.child({ plugin: `${NAME} PARENT` });
+  const log = context.log.child({ name: `${NAME} PARENT` });
 
   const pr = context.payload.pull_request;
   log.debug(`Running on docs#${pr.number}`);

@@ -15,7 +15,7 @@ export const initIssueLinks = (app: Probot) => {
 };
 
 export const runIssueLinks = async (context: LabeledIssueOrPRContext) => {
-  const log = context.log.child({ plugin: NAME });
+  const log = context.log.child({ name: NAME });
   const triggerIssue = getIssueFromPayload(context as any);
   const labelName = context.payload.label.name;
   log.debug(
