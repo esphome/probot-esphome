@@ -95,11 +95,11 @@ export const runCodeOwnersMention = async (
     const triggerLabel = context.name === "issues" ? "issue" : "pull request";
     const commentBody = `Hey there ${mentions.join(
       ", "
-    )}, mind taking a look at this ${triggerLabel} as its been labeled with an integration (\`${integrationName}\`) you are listed as a [codeowner](${codeownersLine}) for? Thanks!`;
+    )}, mind taking a look at this ${triggerLabel} as it has been labeled with an integration (\`${integrationName}\`) you are listed as a [code owner](${codeownersLine}) for? Thanks!`;
 
     log.info(`Adding comment to ${triggerLabel} ${triggerURL}: ${commentBody}`);
 
-    scheduleComment(context, NAME, commentBody);
+    promises.push(scheduleComment(context as any, NAME, commentBody));
   }
 
   // Add a label if author of issue/PR is a code owner

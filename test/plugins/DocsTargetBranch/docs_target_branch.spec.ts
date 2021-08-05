@@ -5,6 +5,9 @@ import {
   bodyShouldTargetNext,
 } from "../../../src/plugins/DocsTargetBranch/docs_target_branch";
 import { PRContext } from "../../../src/types";
+import { COMMENT_DEBOUNCE_TIME } from "../../../src/const";
+
+const sleep = (duration) => new Promise(resolve => setTimeout(resolve, duration));
 
 describe("DocsTargetBranch", () => {
   it("The branch is correct (current)", async () => {
@@ -103,6 +106,7 @@ describe("DocsTargetBranch", () => {
   it("Is next, should be current", async () => {
     let setLabels: any;
     let setAssignees: any;
+    let createComment: any;
 
     const context: Partial<PRContext> = {
       // @ts-ignore
@@ -135,6 +139,10 @@ describe("DocsTargetBranch", () => {
           async addAssignees(assignees) {
             setAssignees = assignees;
           },
+          // @ts-ignore
+          async createComment(comment) {
+            createComment = comment;
+          }
         },
       },
       _prFiles: [],
@@ -146,15 +154,12 @@ describe("DocsTargetBranch", () => {
     assert.deepEqual(setAssignees, {
       assignees: ["developer"],
     });
-    assert.deepEqual(
-      (context as any)._commentsToPost[0].message,
-      bodyShouldTargetCurrent
-    );
+    assert.ok(createComment.body.indexOf(bodyShouldTargetCurrent) !== -1);
   });
   it("Is current, should be next", async () => {
     let setLabels: any;
     let setAssignees: any;
-    let createMessageBody: any;
+    let createComment: any;
 
     const context: Partial<PRContext> = {
       // @ts-ignore
@@ -190,7 +195,7 @@ describe("DocsTargetBranch", () => {
           },
           // @ts-ignore
           async createComment(body) {
-            createMessageBody = body;
+            createComment = body;
           },
         },
       },
@@ -203,10 +208,7 @@ describe("DocsTargetBranch", () => {
     assert.deepEqual(setAssignees, {
       assignees: ["developer"],
     });
-    assert.deepEqual(
-      (context as any)._commentsToPost[0].message,
-      bodyShouldTargetNext
-    );
+    assert.ok(createComment.body.indexOf(bodyShouldTargetNext) !== -1);
   });
   it("Label 'needs-rebase' already exsist", async () => {
     await runDocsTargetBranch({
