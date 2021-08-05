@@ -58,7 +58,7 @@ const runLabeled = async (context: LabeledOrUnlabeledPRContext) => {
 
     log.info(`Adding comment to PR ${pr.html_url}: ${commentBody}`);
 
-    scheduleComment(context, NAME, commentBody);
+    await scheduleComment(context as any, NAME, commentBody);
   } else if (action === "labeled" && isNewIntegration) {
     // When adding new-integration label check if we should add the needs-codeowners label
     const edited = await hasEditedCodeowners(context as any);
