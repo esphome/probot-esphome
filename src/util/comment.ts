@@ -12,7 +12,7 @@ type PatchedContext = (PRContext | IssueContext) & {
 
 const WAIT_COMMENTS = 2500; // ms
 
-const postComment = (context: PRContext | IssueContext) => {
+async function postComment(context: PRContext | IssueContext): void {
   const patchedContext = context as PatchedContext;
   const comments = patchedContext._commentsToPost!;
 
@@ -31,8 +31,8 @@ const postComment = (context: PRContext | IssueContext) => {
 
   let commentBody = toPost.join("\n\n---\n\n");
 
-  context.octokit.issues.createComment(context.issue({ body: commentBody }));
-};
+  await context.octokit.issues.createComment(context.issue({ body: commentBody }));
+}
 
 const debouncedPostComment = debounce(postComment, WAIT_COMMENTS);
 
