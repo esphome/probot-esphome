@@ -27,5 +27,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.PROBOT_AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.PROBOT_AWS_REGION }}
 
+    - run: 'echo "$PROBOT_ENV_FILE" >.env'
+      env:
+        PROBOT_ENV_FILE: ${{ secrets.PROBOT_ENV_FILE }}
+
     - name: Deploy
       run: yarn run deploy
