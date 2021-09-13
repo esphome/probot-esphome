@@ -30,7 +30,7 @@ export function initApp(app: Probot): void {
   initDocsBranchLabels(app);
   initDocsMissing(app);
 
-  // initHacktoberfest(app);
+  initHacktoberfest(app);
   // not needed
   // initDependencyBump(app);
   initNeedsCodeownersLabel(app);
