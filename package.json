@@ -17,18 +17,18 @@
   "devDependencies": {
     "@octokit/webhooks-types": "^4.2.2",
     "@types/debounce": "^1.2.0",
-    "@types/mocha": "^5.2.7",
+    "@types/mocha": "^9.0.0",
     "@types/node": "^16.10.1",
     "mocha": "^6.2.0",
     "prettier": "^2.3.2",
-    "serverless": "^2.52.1",
+    "serverless": "^2.60.0",
     "ts-mocha": "^6.0.0",
     "typescript": "^4.3.5"
   },
   "dependencies": {
     "codeowners-utils": "^1.0.2",
     "ignore": "^5.1.8",
-    "probot": "^12.1.0"
+    "probot": "^12.1.1"
   },
   "prettier": {
     "trailingComma": "es5",
