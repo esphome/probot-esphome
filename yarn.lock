@@ -6497,7 +6497,7 @@ fsevents@~2.3.2:
     prettier: ^2.4.1
     probot: ^12.1.1
     serverless: ^2.60.0
-    ts-mocha: ^6.0.0
+    ts-mocha: ^8.0.0
     typescript: ^4.3.5
   languageName: unknown
   linkType: soft
@@ -8138,20 +8138,20 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"ts-mocha@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "ts-mocha@npm:6.0.0"
+"ts-mocha@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "ts-mocha@npm:8.0.0"
   dependencies:
     ts-node: 7.0.1
     tsconfig-paths: ^3.5.0
   peerDependencies:
-    mocha: ^3.X.X || ^4.X.X || ^5.X.X || ^6.X.X
+    mocha: ^3.X.X || ^4.X.X || ^5.X.X || ^6.X.X || ^7.X.X || ^8.X.X
   dependenciesMeta:
     tsconfig-paths:
       optional: true
   bin:
-    ts-mocha: ./bin/ts-mocha
-  checksum: 12906a9d3b510477db70bcb87816f2e787d82c5dd117f22a3cf48d8cb932198d2ce635f5374f18de334b059161330baee6cd220c98266b1298d9371b83ca5cc3
+    ts-mocha: bin/ts-mocha
+  checksum: 66062e82f9be469cdcf51b120ff83e4a69c664fafb3ee020708cb5d65e87ee6bd8c98703a1012f2fb583d540dcbe14e0be77a36ea69a6c08ba3c89345859d8d9
   languageName: node
   linkType: hard
 
