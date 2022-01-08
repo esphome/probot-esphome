@@ -1082,10 +1082,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.10.1":
-  version: 16.10.1
-  resolution: "@types/node@npm:16.10.1"
-  checksum: 84d7f082e9421fdf1f08dbe00b66848897b2675eacc94a4fa445c4d34cef57c901ecd3276d03ebe110607a848d3df0ab33816aeff51a234e036111dd8ef1422f
+"@types/node@npm:^17.0.8":
+  version: 17.0.8
+  resolution: "@types/node@npm:17.0.8"
+  checksum: f4cadeb9e602027520abc88c77142697e33cf6ac98bb02f8b595a398603cbd33df1f94d01c055c9f13cde0c8eaafc5e396ca72645458d42b4318b845bc7f1d0f
   languageName: node
   linkType: hard
 
@@ -6490,7 +6490,7 @@ fsevents@~2.3.2:
     "@octokit/webhooks-types": ^5.2.0
     "@types/debounce": ^1.2.0
     "@types/mocha": ^9.0.0
-    "@types/node": ^16.10.1
+    "@types/node": ^17.0.8
     codeowners-utils: ^1.0.2
     ignore: ^5.1.8
     mocha: ^6.2.0
