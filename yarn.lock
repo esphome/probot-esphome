@@ -6495,16 +6495,16 @@ fsevents@~2.3.2:
     ignore: ^5.1.8
     mocha: ^6.2.0
     prettier: ^2.5.1
-    probot: ^12.1.1
+    probot: ^12.1.4
     serverless: ^2.60.0
     ts-mocha: ^8.0.0
     typescript: ^4.3.5
   languageName: unknown
   linkType: soft
 
-"probot@npm:^12.1.1":
-  version: 12.1.1
-  resolution: "probot@npm:12.1.1"
+"probot@npm:^12.1.4":
+  version: 12.1.4
+  resolution: "probot@npm:12.1.4"
   dependencies:
     "@octokit/core": ^3.2.4
     "@octokit/plugin-enterprise-compatibility": ^1.2.8
@@ -6543,7 +6543,7 @@ fsevents@~2.3.2:
     uuid: ^8.3.2
   bin:
     probot: bin/probot.js
-  checksum: e88b7390e379783afe085bf1fc10f2c3658aad799c69e0cb2fd4b20de7ed3d14c2570824399d493a10f028869e6f2c936ff63b43e9600006b079ac180c14cb22
+  checksum: 86abed26751aff6f959adafe644c1951cc102edad9df6a89bf858d292297687675d0f4ac330f96b12f09c9e378c9e5c21cc3778c943d41f407c2ae46a647c38c
   languageName: node
   linkType: hard
 
