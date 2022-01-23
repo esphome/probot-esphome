@@ -33,5 +33,6 @@
   "prettier": {
     "trailingComma": "es5",
     "arrowParens": "always"
-  }
+  },
+  "packageManager": "yarn@1.22.17"
 }
