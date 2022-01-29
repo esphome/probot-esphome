@@ -1,7 +1,7 @@
 
 service: probot-esphome
 
-frameworkVersion: "2"
+frameworkVersion: "3"
 useDotenv: true
 
 provider:
@@ -20,8 +20,6 @@ provider:
 functions:
   webhooks:
     handler: ./lib/handler.webhooks
-    exclude:
-      - .devcontainer/**
     events:
       - httpApi:
           path: /api/github/webhooks
