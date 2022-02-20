@@ -9,11 +9,11 @@ _This project is a fork from the Home Assistant Probot [home-assistant/probot-ho
 - Create the app (see Permission & Subscribe to events below)
 - Copy `.env.example` to `.env` and fill in the values; you can use [smee](https://smee.io/new) during development.
 - Download the private key (bottom of app settings) and put in the root, name it `github-app-probot-esphome-key.pem`
-- Develop using `yarn run dev`
+- Develop using `npm run dev`
 - Update GitHub app to set HTTP url to the deployed url
 - Install the GitHub app
 
-On production server: `NODE_ENV=production yarn run start`
+On production server: `NODE_ENV=production npm run start`
 
 ## Repositories
 

@@ -3,7 +3,7 @@
   "name": "Probot Home Assistant",
   "context": "..",
   "dockerFile": "Dockerfile",
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "npm install",
   "extensions": [
     "visualstudioexptteam.vscodeintellicode",
     "esbenp.prettier-vscode"

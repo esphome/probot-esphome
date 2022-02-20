@@ -15,10 +15,10 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14.x
-        cache: yarn
+        cache: npm
 
     - name: Install project dependencies
-      run: yarn install
+      run: npm install
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -32,4 +32,4 @@ jobs:
         PROBOT_ENV_FILE: ${{ secrets.PROBOT_ENV_FILE }}
 
     - name: Deploy
-      run: yarn run deploy
+      run: npm run deploy
