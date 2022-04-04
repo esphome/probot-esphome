@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 
-concurrency: deploy
+concurrency: prod-env
 
 jobs:
   deploy:
