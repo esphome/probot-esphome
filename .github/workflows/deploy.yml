@@ -13,8 +13,8 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2.7.0
+    - uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8  # v2.5.2
       with:
         node-version: 14.x
         cache: npm
@@ -23,7 +23,7 @@ jobs:
       run: npm install
 
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838  # v1.7.0
       with:
         aws-access-key-id: ${{ secrets.PROBOT_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.PROBOT_AWS_SECRET_ACCESS_KEY }}
